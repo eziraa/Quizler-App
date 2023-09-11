@@ -4,16 +4,18 @@ from data import question_data
 
 score = 0
 new_question = random.choice(question_data)
+numbers_of_question = len(question_data)
 is_finished = False
+
 # Creating main window
 window = Tk()
 window.title("Quizler App")
 window.config(bg="#375362", padx=20, pady=20)
-numbers_of_question = len(question_data)
 
 # Creating score label
 score_label = Label(text=f"Score: {score}/{numbers_of_question}", font=("Ariel", 24, "normal"))
 score_label.grid(row=0, column=1)
+
 # Creating canvas
 canvas = Canvas(width=340, height=335, highlightthickness=0)
 correct_bg_img = PhotoImage(file="correct_bg.png")
@@ -46,7 +48,7 @@ def is_true():
         answer = new_question["correct_answers"]
         if answer == "True":
             score += 1
-            score_label.config(text=f"Score: {score}")
+            score_label.config(text=f"Score: {score}/{numbers_of_question}")
             canvas.itemconfig(background_img, image=correct_bg_img)
         else:
             canvas.itemconfig(background_img, image=wrong_bg_img)
