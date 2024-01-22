@@ -1,4 +1,5 @@
 import random
+
 from data import question_data
 from Quiz_Ui import QuizUi
 
